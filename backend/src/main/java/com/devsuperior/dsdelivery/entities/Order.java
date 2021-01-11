@@ -71,6 +71,10 @@ public class Order implements Serializable {
         this.status = status;
     }
 
+    public Double getTotal() {
+        return this.products.stream().map(Product::getPrice).reduce(Double::sum).orElse(0.0);
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
